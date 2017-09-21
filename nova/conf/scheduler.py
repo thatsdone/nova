@@ -194,6 +194,27 @@ Possible values:
 * An integer, where the integer corresponds to the max instances that can be
   scheduled on a host.
 """),
+    cfg.IntOpt("max_projects_per_host",
+        default=50,
+        min=1,
+        deprecated_group="DEFAULT",
+        help="""
+Maximum number of projects that can provision VMs on a host.
+
+If you need to limit the number of projects on any given host, set this option
+to the maximum number of projects you want to allow. The num_projects_filter
+will reject any host that has at least as many projects as this option's
+value.
+
+This option is only used by the FilterScheduler and its subclasses; if you use
+a different scheduler, this option has no effect. Also note that this setting
+only affects scheduling if the 'num_projects_filter' filter is enabled.
+
+Possible values:
+
+* An integer, where the integer corresponds to the max projects that can
+  schedule VMs on a host.
+"""),
     cfg.BoolOpt("track_instance_changes",
         default=True,
         deprecated_name="scheduler_tracks_instance_changes",
