@@ -30,11 +30,11 @@ CONF = nova.conf.CONF
 class NumProjectsFilter(filters.BaseHostFilter):
     """Filter out hosts with too many projects."""
 
-    def _get_max_projects_per_host(self):
+    def _get_max_projects_per_host(self, host_state, spec_obj):
         return CONF.filter_scheduler.max_projects_per_host
 
     def host_passes(self, host_state, spec_obj):
-        max_projects = self._get_max_projects_per_host()
+        max_projects = self._get_max_projects_per_host(host_state, spec_obj)
 
         LOG.debug("DEBUG: NumProjects filter called. "
                   "spec_obj='%s' host_state='%s'", spec_obj, host_state)
