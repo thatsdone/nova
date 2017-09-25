@@ -32,7 +32,7 @@ class TestNumProjectsFilter(test.NoDBTestCase):
         inst_list_mock.return_value = objects.InstanceList()
         inst_list_mock.return_value.objects.append(inst1)
         self.assertTrue(self.filt_cls.host_passes(host, spec_obj))
-        
+
     @mock.patch('nova.objects.instance.InstanceList.get_by_filters')
     def test_filter_num_projects_fails(self, inst_list_mock):
         self.flags(max_projects_per_host=2, group='filter_scheduler')
