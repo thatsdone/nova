@@ -31,7 +31,7 @@ class NumProjectsFilter(filters.BaseHostFilter):
     """Filter out hosts with too many projects."""
 
     def _get_max_projects_per_host(self):
-        return CONF.max_projects_per_host
+        return CONF.filter_scheduler.max_projects_per_host
 
     def host_passes(self, host_state, spec_obj):
         max_projects = self._get_max_projects_per_host()
