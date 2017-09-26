@@ -85,7 +85,7 @@ class AggregateNumProjectsFilter(NumProjectsFilter):
         try:
             value = utils.validate_num_values(
                 aggregate_vals, max_projects_per_host, cast_to=int)
-        except ValueError as e:
+        except Exception as e:
             LOG.warning(_LW("Could not decode max_projects_per_host: '%s'"),
                         e)
             value = max_projects_per_host
